@@ -28,7 +28,7 @@ export const PointBox: React.FC<PointBoxProps> = ({ point }) => {
         <Image
           src={point.url}
           alt={point.name}
-          unoptimized
+          quality={100}
           width={640}
           height={480}
           objectFit='fill'

@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     domains: [
       'transito.gtrans.com.br'
-    ]
+    ],
+    minimumCacheTTL: 0
   }
 }
 
