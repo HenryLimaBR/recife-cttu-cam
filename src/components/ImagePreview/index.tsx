@@ -26,7 +26,7 @@ export const ImagePreview: React.FC = () => {
           <Image
             src={previewPoint.url}
             alt={previewPoint.name}
-            unoptimized
+            quality={100}
             width='640'
             height='480'
             objectFit='fill'
