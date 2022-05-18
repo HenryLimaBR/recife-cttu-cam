@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html, body, #__next {
-  @apply min-h-screen overscroll-contain;
+  @apply min-h-screen w-full overscroll-contain;
 }
 
 body {
