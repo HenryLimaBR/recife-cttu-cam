@@ -1,4 +1,3 @@
-import { MagnifyingGlass } from 'phosphor-react'
 import React, { useContext } from 'react'
 import { PointsContext } from '../../contexts/pointsContext'
 

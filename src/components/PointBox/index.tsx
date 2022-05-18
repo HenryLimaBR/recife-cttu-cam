@@ -22,7 +22,7 @@ export const PointBox: React.FC<PointBoxProps> = ({ point }) => {
       title={point.name}
     >
       <div
-        className={`aspect-[4/3] w-full overflow-hidden rounded-sm flex justify-center items-center cursor-pointer`}
+        className={`aspect-[4/3] w-full overflow-hidden rounded-sm flex justify-center items-center cursor-pointer bg-gray-900`}
         onClick={() => setPreviewPoint(point)}
       >
         <Image
