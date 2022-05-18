@@ -22,7 +22,7 @@ export async function getPoints() {
       long: parseFloat(long) || 0,
       ip,
       name: rawName.replace(/[^\x00-\xff]/g, ''),
-      url: `http://transito.gtrans.com.br/cttupe/index.php/portal/getImg/${ip}`
+      url: `http://transito.gtrans.com.br/cttupe/index.php/portal/getImg/${ip}?t=${Date.now()}`,
     }
   })
 
