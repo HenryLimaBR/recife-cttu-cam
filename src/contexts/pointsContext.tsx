@@ -7,6 +7,7 @@ interface PointsContextProps {
   points: Map<string, Point>
   removePoint: (point: Point) => void
   previewPointState: State<Point | null>
+  searchState: State<string>
 }
 
 export const PointsContext = createContext({} as PointsContextProps)
@@ -18,6 +19,7 @@ interface PointsContextProviderProps {
 export const PointsContextProvider: React.FC<PointsContextProviderProps> = ({ children }) => {
   const [points, setPoints] = useState<Map<string, Point>>(new Map())
   const [previewPoint, setPreviewPoint] = useState<Point | null>(null)
+  const [search, setSearch] = useState<string>('')
 
   useEffect(() => {
     const fetchPoints = async () => {
@@ -35,9 +37,9 @@ export const PointsContextProvider: React.FC<PointsContextProviderProps> = ({ ch
 
   const removePoint = useCallback((point: Point) => {
     setPoints((prev) => {
-      const newPoints = new Map(prev)
-      newPoints.delete(point.ip)
-      return newPoints
+      const next = new Map(prev)
+      next.delete(point.ip)
+      return next
     })
   }, [])
 
@@ -46,6 +48,7 @@ export const PointsContextProvider: React.FC<PointsContextProviderProps> = ({ ch
       points,
       removePoint,
       previewPointState: [previewPoint, setPreviewPoint],
+      searchState: [search, setSearch]
     }}>
       {children}
     </PointsContext.Provider>
