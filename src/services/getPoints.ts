@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const filter = /criaPonto\((-?[0-9]+\.[0-9]+)\s+,(-?[0-9]+\.[0-9]+)\s+,'([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)',.+<\/b>(.+)<\/span>.+;/
+const filter = /criaPonto\((-?\d+\.\d+)\s+,(-?\d+\.\d+)\s+,'(\d+\.\d+\.\d+\.\d+)',.+<\/b>(.+)<\/span>.+\);?/
 
 export interface Point {
   lat: number
@@ -15,7 +15,7 @@ export async function getPoints() {
   const rawPoints = page.data.match(/criaPonto\(.+\);/g)!
 
   const points: Point[] = rawPoints.map((rawPoint) => {
-    const [, lat, long, ip, rawName] = filter.exec(rawPoint)!
+    const [, lat, long, ip, rawName] = filter.exec(rawPoint)!.filter(i => i.match(filter))
 
     return {
       lat: parseFloat(lat) || 0,
