@@ -14,8 +14,8 @@ export async function getPoints() {
   const page = await axios.get<string>('http://transito.gtrans.com.br/cttupe/index.php/mapa')
   const rawPoints = page.data.match(/criaPonto\(.+\);/g)!
 
-  const points: Point[] = rawPoints.map((rawPoint) => {
-    const [, lat, long, ip, rawName] = filter.exec(rawPoint)!.filter(i => i.match(filter))
+  const points: Point[] = rawPoints.filter(i => i.match(filter)).map((rawPoint) => {
+    const [, lat, long, ip, rawName] = filter.exec(rawPoint)!
 
     return {
       lat: parseFloat(lat) || 0,
